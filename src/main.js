@@ -3,7 +3,31 @@ document.addEventListener('DOMContentLoaded', function(){
     
     const buttons = document.querySelectorAll('[data-tab-button]');
     const questions_faq = document.querySelectorAll('[data-faq-question]');
-   
+
+    const herosection = document.querySelector('.hero');
+    const alturaHero =  herosection.clientHeight;
+
+    window.addEventListener('scroll', function() {
+    const posicaoAtual = window.scrollY;
+        
+    if (posicaoAtual < alturaHero) {
+        ocultaElementosDoHeader();
+    } else {
+        exibeElementoDoHeader();
+    }
+    })
+
+    function ocultaElementosDoHeader(){
+        const header = document.querySelector('header');
+        header.classList.add('header--is-hidden');
+    }
+    
+    function exibeElementoDoHeader(){
+        const header = document.querySelector('header');
+        header.classList.remove('header--is-hidden');
+    }
+
+    //para ceção de atraçoes
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function(botao) {
             const abaAlvo = botao.target.dataset.tabButton;
@@ -15,6 +39,8 @@ document.addEventListener('DOMContentLoaded', function(){
             
         })
     }
+
+    //Seção FAQ accordeon
     for (let i = 0; i < questions_faq.length; i++){
         questions_faq[i].addEventListener('click', abreOuFechaResposta);
         
