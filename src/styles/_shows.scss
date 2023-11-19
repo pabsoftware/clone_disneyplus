@@ -7,6 +7,10 @@
         display:  none;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 24px;
+        @media (max-width: 768px) {
+            grid-template-columns: 1fr 1fr;
+        }
+        gap: 24px;
         &--is-active {
             display:  grid;
         }
